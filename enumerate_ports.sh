@@ -8,6 +8,8 @@ if [ -z "$HTB_IP" ]
 then
     echo "HTB_IP is empty"
     exit
+else
+   echo "enumerating $HTB_IP ..." 
 fi
 
 ports=$(nmap -p- --min-rate=1000 -T4 $HTB_IP | grep ^[0-9] | cut -d '/' -f1 | tr '\n' ',' | sed s/,$//)
